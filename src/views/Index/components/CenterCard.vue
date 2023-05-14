@@ -1,13 +1,59 @@
 <template>
-  <el-card class="right-card-container" body-style="display:flex;flex-direction:column;align-items: center;  ">
-    <el-row :gutter="12" type="flex" justify="center" align="middle">
-      <el-col :span="20"><el-input type="search" /></el-col>
+  <el-card class="right-card-container">
+    <el-row :gutter="12" type="flex" justify="center" style="flex-wrap: nowrap; overflow: hidden; min-width: 50px">
+      <el-col :span="20">
+        <el-popover placement="bottom" trigger="click" :width="260">
+          <p>search info : {{ searchInfo }}</p>
+          <div>
+            <el-scrollbar class="showList">
+              <div v-for="(item, index) in chatList" key="index">
+                <div class="chat-item">
+                  <!-- <div v-if="item.user_id" class="chat-item"> -->
+                  <div class="chat-item-left">
+                    <div class="chat-item-img">
+                      <img src="@/assets/bg.jpg" />
+                      <i></i>
+                    </div>
+                    <div class="chat-item-content">
+                      <div class="chat-item-name">{{ item.name }}</div>
+                      <div class="chat-item-msg">{{ item.lastMessage }}</div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div v-if="item.group_id" class="chat-item">cccxxx</div> -->
+              </div>
+            </el-scrollbar>
+          </div>
+          <template #reference>
+            <el-input maxlength="12" type="text" clearable v-model.trim="searchInfo" @input="searchInfoChange" prefix-icon="Search" />
+          </template>
+        </el-popover>
+        <!-- <el-input type="text" clearable v-model.trim="searchInfo" @input="searchInfoChange" prefix-icon="Search" /> -->
+        <!-- ><template #prefix>
+            <el-icon><Search /></el-icon>
+          </template> -->
+      </el-col>
       <el-col :span="4" style="display: inline-flex; color: #d7dae0">
-        <el-icon size="26"><Plus /></el-icon
-      ></el-col>
+        <el-popover placement="right-end" :auto-close="6000" trigger="click">
+          <template #reference>
+            <el-icon size="30"><Plus /></el-icon>
+          </template>
+          <el-menu @select="">
+            <el-menu-item index="Friend">
+              <el-icon><Avatar /></el-icon>
+              <template #title>friend</template>
+            </el-menu-item>
+            <el-menu-item index="Group">
+              <el-icon><ChatSquare /></el-icon>
+              <template #title>group</template>
+            </el-menu-item>
+          </el-menu>
+        </el-popover>
+      </el-col>
     </el-row>
     <el-divider style="margin-top: 16px; margin-bottom: 0px" />
-    <div class="showList">
+    <!-- <el-scrollbar height="400px"> -->
+    <el-scrollbar class="showList" style="transform: translateX(-20px)">
       <div v-for="(item, index) in chatList" key="index">
         <div class="chat-item">
           <!-- <div v-if="item.user_id" class="chat-item"> -->
@@ -27,7 +73,7 @@
         </div>
         <!-- <div v-if="item.group_id" class="chat-item">cccxxx</div> -->
       </div>
-    </div>
+    </el-scrollbar>
   </el-card>
 </template>
 <script setup lang="ts">
@@ -39,6 +85,22 @@ import { reactive, ref, toRaw } from 'vue'
 let activeName = ref('chat')
 const toLink = index => {
   emit('toLink', index)
+}
+
+const searchInfo = ref('')
+const visible = ref(false)
+const getUserInfo = val => {
+  console.log(val)
+}
+let timer
+const searchInfoChange = () => {
+  // console.log(searchInfo.value)
+  timer ? clearTimeout(timer) : ''
+  if (searchInfo.value) {
+    timer = setTimeout(() => {
+      getUserInfo(searchInfo.value)
+    }, 500)
+  }
 }
 
 // avatar,lastMessage(最后一条消息),name,room,type,
@@ -67,6 +129,160 @@ const chatList = [
     group_id: 1,
     unreadCount: 12,
     type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
+  },
+  {
+    name: '大学少时诵诗书所所所所所所所',
+    avatar: '',
+    updated_at: '213',
+    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+    room: '',
+    user_id: null,
+    group_id: 1,
+    unreadCount: 12,
+    type: 'text'
   }
 ]
 </script>
@@ -74,6 +290,8 @@ const chatList = [
 .right-card-container {
   width: 240px;
   height: 500px;
+  min-width: 70px;
+  max-width: 240px;
   padding: 0;
 }
 .showList {

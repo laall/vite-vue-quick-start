@@ -2,8 +2,8 @@
   <div class="container">
     <el-card class="home-container" body-style="padding:0;margin:0;display:flex; position: relative;">
       <left-card @toLink="handleLinkChange" @toSettings="handleSettings" />
-      <center-card  @toLink="handleLinkChange" >xx </center-card>
-      <right-card >xx</right-card>
+      <center-card @toLink="handleLinkChange">xx </center-card>
+      <right-card>xx</right-card>
       <div class="right-top-tips">
         <el-icon size="20" class="sys-icon"> <Minus /> </el-icon>
         <el-icon size="20" class="sys-icon"> <FullScreen /> </el-icon>
@@ -17,8 +17,6 @@ import { reactive, ref, toRaw } from 'vue'
 import LeftCard from './components/LeftCard.vue'
 import CenterCard from './components/CenterCard.vue'
 import RightCard from './components/RightCard.vue'
-
-
 
 const handleSettings = index => {
   console.log(index)
@@ -55,7 +53,6 @@ const handleLinkChange = index => {
       break
   }
 }
-
 </script>
 <style scoped lang="less">
 .home-container {
