@@ -1,0 +1,79 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "strict": false,
+        "jsx": "preserve",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "lib": [
+            "ESNext",
+            "DOM"
+        ],
+        "skipLibCheck": true,
+        "noEmit": true,
+        // ts中 声明 @代表src
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ],
+            "@assets/*": [
+                "src/assets/*"
+            ],
+            "@components/*": [
+                "src/components/*"
+            ],
+            "@router/*": [
+                "src/router/*"
+            ],
+            "@views/*": [
+                "src/views/*"
+            ],
+            "@api/*": [
+                "src/api/*"
+            ],
+            "@common/*": [
+                "src/common/*"
+            ],
+            "@store/*": [
+                "src/store/*"
+            ],
+            "@style/*": [
+                "src/style/*"
+            ],
+            "@utils/*": [
+                "src/utils/*"
+            ],
+            "@plugins/*": [
+                "src/plugins/*"
+            ],
+            "@login/*": [
+                "src/views/login/*"
+            ],
+            "@modules/*": [
+                "src/store/modules/*"
+            ],
+            "@auth/*": [
+                "src/api/auth/*"
+            ],
+            "@Index/*": [
+                "src/views/Index/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue"
+    ],
+    "references": [
+        {
+            "path": "./tsconfig.node.json"
+        }
+    ]
+}
