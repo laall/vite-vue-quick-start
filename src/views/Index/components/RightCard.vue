@@ -13,7 +13,12 @@
               <i></i>
             </div>
             <div class="msg-item-right">
-              <div class="msg-item-name">{{ item.nickname }}</div>
+              <div class="msg-item-name">
+                <span>{{ item.nickname }}</span>
+                <span>
+                  <a href="#">({{ item.sender_id }})</a></span
+                >
+              </div>
 
               <div class="msg-item-content">
                 <!-- text(文本),image(图片),video(视频),file(文件) -->
@@ -46,7 +51,15 @@
       </div>
 
       <div class="function-line">
-        <el-icon size="26"><Eleme /></el-icon>
+        <el-popover  placement="top-end" trigger="click" :width="500">
+          <div class="emoji-list"  @click.stop="">
+            <span  class="emoji-list-item" v-for="(item, index) in EmojiList" :key="index" @click.stop="addEmoji(item)">{{ item }}</span>
+          </div>
+          <template #reference>
+            <el-icon size="26"><Eleme /></el-icon>
+          </template>
+        </el-popover>
+
         <el-icon size="26"><Scissor /></el-icon>
         <el-icon size="26"><PictureRounded /></el-icon>
         <el-icon size="26"><Folder /></el-icon>
@@ -55,6 +68,7 @@
         <el-icon size="26"><Camera /></el-icon>
         <!-- <el-icon size="26"><Microphone /></el-icon> -->
       </div>
+
       <el-input
         v-model="textarea"
         maxlength="300"
@@ -94,7 +108,9 @@
 // import { defineEmits } from "vue"
 // 对应写法一
 // const emit = defineEmits(['toSettings', 'toLink'])
-
+import { EmojiList } from '@/utils/emoji'
+const showEmoji = ref(true)
+const addEmoji = item => {}
 import { reactive, ref, toRaw } from 'vue'
 let activeName = ref('chat')
 let expandSetting = ref(false)
@@ -169,6 +185,7 @@ const toSettings = index => {
     height: 100%;
   }
   .msg-item-time {
+    text-align: center;
     font-size: 12px;
     color: gray;
     display: block;
@@ -199,10 +216,12 @@ const toSettings = index => {
     text-align: left;
   }
   .msg-item-name {
-    max-width: 300px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: red;
+    span {
+      display: inline-block;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
   .msg-item-content {
     width: fit-content;
@@ -214,13 +233,6 @@ const toSettings = index => {
   }
 }
 
-.play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-}
 .right-bottom-card {
   transition: height ease-in-out 0.5s;
   position: relative;
@@ -237,7 +249,6 @@ const toSettings = index => {
   .hide-bittom-btn:hover {
     top: -40px;
   }
-
   .function-line {
     text-align: start;
     .el-icon {
@@ -250,12 +261,35 @@ const toSettings = index => {
     right: 20px;
   }
 }
+
+.emoji-list {
+  display: flex;
+  flex-wrap: wrap;
+  user-select:none;
+  
+  font-size: 24px;
+  .emoji-list-item {
+       transition:all 0.6s ease-out;
+       
+   }
+  .emoji-list-item:hover{
+       
+      transform:scale(2.5);
+  }
+}
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .el-button .custom-loading .circular {
   margin-right: 6px;
   width: 18px;
   height: 18px;
   animation: loading-rotate 2s linear infinite;
 }
+
 .el-button .custom-loading .circular .path {
   animation: loading-dash 1.5s ease-in-out infinite;
   stroke-dasharray: 90, 150;

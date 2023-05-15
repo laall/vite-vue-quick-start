@@ -1,10 +1,10 @@
 <template>
-  <el-card class="right-card-container">
+  <el-card class="right-card-container" body-style="height:90%; ">
     <el-row :gutter="12" type="flex" justify="center" style="flex-wrap: nowrap; overflow: hidden; min-width: 50px">
       <el-col :span="20">
         <el-popover placement="bottom" trigger="click" :width="260">
           <p>search info : {{ searchInfo }}</p>
-          <div>
+          <div style="height: 460px">
             <el-scrollbar class="showList">
               <div v-for="(item, index) in chatList" key="index">
                 <div class="chat-item">
@@ -106,8 +106,31 @@ const searchInfoChange = () => {
 // avatar,lastMessage(最后一条消息),name,room,type,
 // unreadCount(当前用户未读的消息数量)
 //,updated_at,group_id(分组id)
-
+const msg = {
+  name: '大学少时诵诗书所所所所所所所',
+  avatar: '',
+  updated_at: '12:10',
+  lastMessage: 'aaaaaa大学少时诵诗书所所所所',
+  room: '',
+  user_id: 1,
+  group_id: null,
+  unreadCount: 12,
+  type: 'text'
+}
 const chatList = [
+  msg,
+  msg,
+  msg,
+  msg,
+  msg,
+  msg,
+  msg,
+  msg,
+  msg,
+  msg,
+  msg,
+  msg,
+  msg,
   {
     name: '大学少时诵诗书所所所所所所所',
     avatar: '',
@@ -129,179 +152,28 @@ const chatList = [
     group_id: 1,
     unreadCount: 12,
     type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
-  },
-  {
-    name: '大学少时诵诗书所所所所所所所',
-    avatar: '',
-    updated_at: '213',
-    lastMessage: 'aaaaaa大学少时诵诗书所所所所',
-    room: '',
-    user_id: null,
-    group_id: 1,
-    unreadCount: 12,
-    type: 'text'
   }
 ]
 </script>
 <style scoped lang="less">
 .right-card-container {
   width: 240px;
-  height: 500px;
+  height: 100%;
   min-width: 70px;
   max-width: 240px;
   padding: 0;
+  resize: horizontal;
 }
 .showList {
   width: 240px;
-  height: 430px;
+  // height: 430px;
+  height: 100%;
   .chat-item {
+    position: relative;
     margin-bottom: 1px;
-    display: flex;
     box-sizing: border-box;
     padding: 10px;
+    width: 100%;
     height: 70px;
     border-bottom: 1px solid #eee;
   }
@@ -310,7 +182,12 @@ const chatList = [
   }
 }
 .chat-item-time {
-  width: 50px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: gray;
+  font-size: 12px;
+  white-space: nowrap;
 }
 .chat-item-img {
   width: 50px;
@@ -339,7 +216,7 @@ const chatList = [
     .chat-item-msg {
       font-size: 14px;
       color: rgb(151, 144, 144);
-      width: 170px;
+      width: 160px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;

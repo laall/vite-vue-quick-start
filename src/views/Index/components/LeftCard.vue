@@ -1,5 +1,5 @@
 <template>
-  <el-card class="left-card-container" body-style="display:flex;flex-direction:column;align-items: center;  ">
+  <el-card class="left-card-container" body-style="display:flex;flex-direction:column;align-items: center;">
     <div @click="emit('toLink', 'userinfo')" class="left-card-container-img"><img src="@/assets/bg.jpg" /></div>
     <div class="left-card-container-img-bg"></div>
     <br />
