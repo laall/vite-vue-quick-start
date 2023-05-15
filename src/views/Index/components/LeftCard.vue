@@ -25,7 +25,7 @@
       @show="expandSetting = true"
       @hide="expandSetting = false"
       placement="right-end"
-      :auto-close="300"
+      :auto-close="6000"
       :width="150"
       trigger="click"
     >
